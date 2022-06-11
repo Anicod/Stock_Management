@@ -2,7 +2,7 @@ package com.bl.stock_management;
 
 import java.util.Scanner;
 
-public class StockMain {
+public class StockMain {-
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
