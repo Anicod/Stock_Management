@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class StockPortfolio {
     ArrayList<StockInfo> stockList = new ArrayList<StockInfo>();
     StockInfo stockInfo;
+    double totalValueOfStock = 0;
     Scanner scanner = new Scanner(System.in);
 
     void readTheStock(int stockNumber) {
@@ -24,7 +25,7 @@ public class StockPortfolio {
     }
 
     void calculateStock() {
-        double totalValueOfStock = 0;
+
         for (StockInfo index : stockList) {
             double valueOfeachStock = index.getNumberOfShare() * index.getSharePrice();
             totalValueOfStock += valueOfeachStock;
@@ -34,7 +35,30 @@ public class StockPortfolio {
 
 
     }
+
+    int debit() {
+        double withdrawlAmount;
+        System.out.println("enter amount to withdraw");
+        withdrawlAmount = scanner.nextDouble();
+        if (totalValueOfStock - withdrawlAmount <= 0)
+            System.out.println("you have an insufficient balance");
+        else if (withdrawlAmount == 0)
+            System.out.println("enter the valid withdrawl amount");
+        else {
+            System.out.println("amount " + withdrawlAmount + " from the account");
+            if (withdrawlAmount > 0) {
+                totalValueOfStock = totalValueOfStock - withdrawlAmount;
+                System.out.println("The amount " + withdrawlAmount + " withdraw successfully");
+                System.out.println("The total amount after withdrawl " + totalValueOfStock);
+            } else {
+                System.out.println("process is terminated back to the main menue");
+                return 1;
+            }
+        }
+        return 1;
+    }
 }
+
 
 
 
