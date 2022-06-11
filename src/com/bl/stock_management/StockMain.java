@@ -15,6 +15,12 @@ public class StockMain {
         }
 
         stockPortfolio.calculateStock();
+        while(true){
+            System.out.println("enter a positive number");
+            int var = (scanner.nextInt()>0) ? stockPortfolio.debit() : 0;
+            if(var == 0)
+                System.out.println("Process terminated");
+        }
 
 
     }
